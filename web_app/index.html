@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Joy Vazirani</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        $('input[name="type_text"]').bind('keyup blur',function(){
+            var node = $(this);
+            node.val(node.val().replace(/[^a-zA-Z ]/g,'') ); }
+        );
+
+        $('input[name="type_text"]').keyup(function(){
+          // console.log($(this).val());
+          if (event.keyCode != 32 && (event.keyCode < 65 || event.keyCode > 90)) {
+            flashNotSupported();
+          } else {
+            populateText($(this).val());
+          }
+
+        });
+    });
+
+    function populateText(key){
+      $(".output_container").empty();
+      for (var i = 0; i < key.length; i++) {
+          if (key.charAt(i) == " ") {
+             // $(".output_container").append('<img style="top:'+i*10+'px;" class="waveform" id="space" src="letters/space_canvas.png"/>')
+          } else {
+            // console.log(event.keyCode)
+            $(".output_container").append('<img style="top:'+i*10+'px;" class="waveform" id="'+key.charAt(i)+'" src="letters/'+key.charAt(i)+'_canvas.png"/>')
+          }
+      }
+    }
+
+    function flashNotSupported() {
+        $(".not_supported").show().delay(500).fadeOut()
+    }
+
+    </script>
+    <style media="screen">
+      html body {
+        background-color: black;
+        margin:0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-weight: 300;
+      }
+      .input_container {
+        margin:20px;
+      }
+      .output_container {
+        width: 100%;
+        display: block;
+        position: relative;
+        float: left;
+      }
+      #input {
+        position: relative;
+        z-index: 2;
+        width: 500px;
+        padding: 10px;
+        float:left;
+      }
+      .waveform {
+        position: absolute;
+        max-width: 1000px;
+      }
+      .description {
+        color: white;
+      }
+      .not_supported {
+        background: red;
+        position: relative;
+        float: left;
+        padding: 8px;
+        margin-left: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="input_container">
+      <div class="description">
+        Type any word (limited to letters)
+      </div>
+      <input id="input" type="text" name="type_text">
+      <div class="not_supported">
+        Character not supported
+      </div>
+    </div>
+    <div class="output_container">
+
+    </div>
+  </body>
+</html>
