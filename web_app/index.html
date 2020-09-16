@@ -11,12 +11,8 @@
     $( document ).ready(function() {
         $('input[name="type_text"]').bind('keyup blur',function(){
             var node = $(this);
-            node.val(node.val().replace(/[^a-zA-Z ]/g,'') );
-            // if (event.keyCode != 32 && (event.keyCode < 65 || event.keyCode > 90)) {
-            //   flashNotSupported();
-            // } else {
-            //   populateText($(this).val());
-            // }
+            node.val(node.val().replace(/[^a-z ]/g,'') ); //only lowercase letters
+            // node.val(node.val().replace(/[^a-zA-Z ]/g,'') ); //include uppercase letters
 
             if (event.keyCode == 32 || (event.keyCode >= 65 && event.keyCode <= 90)) {
               populateText($(this).val());
@@ -25,16 +21,6 @@
             } else {
               flashNotSupported();
             }
-        });
-
-        $('input[name="type_text"]').keyup(function(){
-          // console.log($(this).val());
-          // if (event.keyCode != 32 && (event.keyCode < 65 || event.keyCode > 90)) {
-          //   flashNotSupported();
-          // } else {
-          //   populateText($(this).val());
-          // }
-
         });
     });
 
@@ -189,7 +175,7 @@
     </div>
     <div class="input_container">
       <div class="description">
-        Type any word (limited to letters)
+        Type any text (limited to lowercase letters)
       </div>
       <input id="input" type="text" name="type_text">
       <div class="not_supported">
