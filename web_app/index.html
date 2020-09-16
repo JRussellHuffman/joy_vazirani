@@ -11,16 +11,29 @@
     $( document ).ready(function() {
         $('input[name="type_text"]').bind('keyup blur',function(){
             var node = $(this);
-            node.val(node.val().replace(/[^a-zA-Z ]/g,'') ); }
-        );
+            node.val(node.val().replace(/[^a-zA-Z ]/g,'') );
+            // if (event.keyCode != 32 && (event.keyCode < 65 || event.keyCode > 90)) {
+            //   flashNotSupported();
+            // } else {
+            //   populateText($(this).val());
+            // }
+
+            if (event.keyCode == 32 || (event.keyCode >= 65 && event.keyCode <= 90)) {
+              populateText($(this).val());
+            } else if (event.keyCode == 8) { //backspace
+              populateText($(this).val());
+            } else {
+              flashNotSupported();
+            }
+        });
 
         $('input[name="type_text"]').keyup(function(){
           // console.log($(this).val());
-          if (event.keyCode != 32 && (event.keyCode < 65 || event.keyCode > 90)) {
-            flashNotSupported();
-          } else {
-            populateText($(this).val());
-          }
+          // if (event.keyCode != 32 && (event.keyCode < 65 || event.keyCode > 90)) {
+          //   flashNotSupported();
+          // } else {
+          //   populateText($(this).val());
+          // }
 
         });
     });
@@ -100,6 +113,7 @@
       .waveform {
         position: absolute;
         max-width: 1000px;
+        width: calc(100% - 40px);
       }
       .description {
         color: white;
@@ -151,9 +165,6 @@
         #input {
           width: calc(100% - 44px);
           /* width:100%; */
-        }
-        .waveform {
-          width: calc(100% - 44px);
         }
 
       }
