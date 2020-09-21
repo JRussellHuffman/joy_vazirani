@@ -30,22 +30,22 @@
 
     var drawing;
 
-    function populateText(key){
+    function populateText(text){
       $(".output_container").empty();
-      for (var i = 0; i < key.length; i++) {
-        var letter = key.charAt(i);
-          if (key.charAt(i) == " ") {
+      for (var i = 0; i < text.length; i++) {
+        var letter = text.charAt(i);
+          if (text.charAt(i) == " ") {
             //commenting out to omit space character waveform. it looks crazy...
              // $(".output_container").append('<img style="top:'+i*10+'px;" class="waveform" id="space" src="letters/space_canvas.png"/>')
           } else {
             // console.log(event.keyCode)
             if (letter == letter.toUpperCase()) {
                console.log("is uppercase");
-               $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px;" class="waveform" id="'+key.charAt(i)+'" src="letters/caps/'+key.charAt(i)+'_canvas.png"/>');
+               $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px;" class="waveform" id="'+letter+'" src="letters/caps/'+letter+'_canvas.png"/>');
             }
             if (letter == letter.toLowerCase()){
                console.log("is lowecase");
-               $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px;" class="waveform" id="'+key.charAt(i)+'" src="letters/lower/'+key.charAt(i)+'_canvas.png"/>');
+               $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px;" class="waveform" id="'+letter+'" src="letters/lower/'+letter+'_canvas.png"/>');
             }
             // $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px; left:20px;" class="waveform" id="'+key.charAt(i)+'" src="letters/'+key.charAt(i)+'_canvas.png"/>');
             // drawing = '<img style="top:'+(i*10) +'px; left:20px;" class="waveform" id="'+key.charAt(i)+'" src="letters/'+key.charAt(i)+'_canvas.png"/>';
@@ -55,9 +55,10 @@
     }
 
     function generateDrawing() {
-      console.log("at least I got here");
-      populateText(drawingText);
-      $(".output_container").append("<div class='typed_text'>"+drawingText+"</div>");
+      console.log("at least I got her asdfasdfe");
+      var textToDraw = $("#input").val();
+      populateText(textToDraw);
+      $(".output_container").append("<div class='typed_text'>"+textToDraw+"</div>");
     }
 
     function flashNotSupported() {
