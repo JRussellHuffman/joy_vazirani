@@ -21,7 +21,7 @@
             } else if (event.keyCode == 8) { //backspace
               // populateText($(this).val());
               drawingText = $(this).val()
-              console.log("drawing text is " + drawingText);
+              // console.log("drawing text is " + drawingText);
             } else {
               // flashNotSupported();
             }
@@ -40,22 +40,22 @@
           } else {
             // console.log(event.keyCode)
             if (letter == letter.toUpperCase()) {
-               console.log("is uppercase");
+               // console.log("is uppercase");
                $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px;" class="waveform" id="'+letter+'" src="letters/caps/'+letter+'_canvas.png"/>');
             }
             if (letter == letter.toLowerCase()){
-               console.log("is lowecase");
+               // console.log("is lowecase");
                $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px;" class="waveform" id="'+letter+'" src="letters/lower/'+letter+'_canvas.png"/>');
             }
             // $(".output_container").append('<img style="top:'+(i*10 - 100)+ 'px; left:20px;" class="waveform" id="'+key.charAt(i)+'" src="letters/'+key.charAt(i)+'_canvas.png"/>');
             // drawing = '<img style="top:'+(i*10) +'px; left:20px;" class="waveform" id="'+key.charAt(i)+'" src="letters/'+key.charAt(i)+'_canvas.png"/>';
-            $(".output_container").height(400 + (i*10));
+            $(".output_container").height(300 + (i*10));
           }
       }
     }
 
     function generateDrawing() {
-      console.log("at least I got her asdfasdfe");
+      // console.log("at least I got her asdfasdfe");
       var textToDraw = $("#input").val();
       populateText(textToDraw);
       $(".output_container").append("<div class='typed_text'>"+textToDraw+"</div>");
@@ -209,6 +209,8 @@
 
         .typed_text {
           margin-left: 0;
+          font-size: 24px;
+          margin-top: 20px;
         }
 
         .waveform {
